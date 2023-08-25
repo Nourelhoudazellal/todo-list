@@ -1,0 +1,19 @@
+doctype html
+html
+  head
+    title Task App
+    link(rel='stylesheet', href='/styles/style.css')
+  body
+    h1 Welcome to the Task App!
+    
+    form(action='/add', method='post')
+      input(type='text', name='task', placeholder='Enter a new task')
+      button(type='submit') Add Task
+    
+    ul
+      each task in tasks
+        li= task || "Untitled"
+
+          -  id = task.id 
+          form(action="/delete/" + id, method="POST")
+            button(type="submit" class='delete') Delete
